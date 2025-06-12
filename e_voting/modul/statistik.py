@@ -14,7 +14,7 @@ def tampilkan_statistik():
 
     tertinggi=[]
     for y in calon.calon:
-        tertinggi.append(y["Jumlah_suara"])
+        tertinggi.append(y["jumlah_suara"])
     maxim=max(tertinggi)
     for z in calon.calon:
         if z["jumlah_suara"]==maxim:
