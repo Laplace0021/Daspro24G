@@ -1,17 +1,33 @@
 from modul import pemilih, calon
+
 def lakukan_voting():
-    pelaku = input("Masukan ID pemilih")
+    pelaku_id = input("Masukan ID pemilih: ")
+
+    # Cari pemilih
+    pemilih_terpilih = None
     for p in pemilih.pemilih:
-        if pemilih[p]["sudah_memilih"]==False:
-            dipilih = input("Masukan ID calon")
-            if dipilih in calon["id"]:
-                pemilih.pemilih[pelaku]["sudah_memilih"==True]
-                calon.calon[dipilih]["jumlah_suara"]+=1
-            else:
-                print("calon tidak ada")
-        else:
-            print("Pemilih tidak ada / sudah memilih")
+        if p["id"] == pelaku_id:
+            pemilih_terpilih = p
+            break
+
+    if pemilih_terpilih["sudah_memilih"]:
+        print("Pemilih sudah memilih.")
+        return
+
+    dipilih_id = input("Masukan ID calon: ")
+
+    # Cari calon
+    calon_terpilih = None
+    for c in calon.calon:
+        if c["id"] == dipilih_id:
+            calon_terpilih = c
+            break
+
+    # Lakukan voting
+    calon_terpilih["jumlah_suara"] += 1
+    pemilih_terpilih["sudah_memilih"] = True
+    print("Voting berhasil!")
 
 def tampilkan_hasil():
-    for x in calon:
-        print (x)
+    for x in calon.calon:
+        print(x)
